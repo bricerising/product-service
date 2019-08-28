@@ -1,0 +1,22 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: product-service
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: product-service
+        version: {{ .Values.productservice.deployment.tag }}
+    spec:
+      containers:
+        - name: product-service
+          image: {{ .Values.productservice.deployment.image }}:{{ .Values.productservice.deployment.tag }}
+          imagePullPolicy: Always
+          resources:
+            limits:
+              memory: 128M
+              cpu: .1
+          ports:
+            - containerPort: 3000

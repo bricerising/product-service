@@ -1,0 +1,4 @@
+productservice:
+  deployment:
+    image: docker.io/bricerisingslalom/product-service
+    tag: latest

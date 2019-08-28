@@ -1,0 +1,5 @@
+name: product-service
+version: 1.0
+description: Powerful express application
+maintainers:
+  - name: Brice Rising
