@@ -17,7 +17,7 @@ app.get('/:productId', function (req, res) {
       .send(error);
   }).then( (product) => {
     if (product) {
-      res.send(JSON.stringify(product));
+      res.send(product);
     } else {
       res.status(404)
         .send('Not found');
@@ -35,8 +35,8 @@ app.get('/', function (req, res) {
   });
 });
 
-app.put('/', function (req) {
-  queries.create(req.body).catch((error) => {
+app.put('/', function (req, res) {
+  queries.create(JSON.parse(JSON.stringify(req.body))).catch((error) => {
     res.status(500)
       .send(error);
   }).then((product) => {
@@ -45,8 +45,8 @@ app.put('/', function (req) {
   });
 });
 
-app.post('/:productId', function (req) {
-    queries.update(req.params['productId'], req.body).catch((error) => {
+app.post('/:productId', function (req, res) {
+    queries.update(req.params['productId'], JSON.parse(JSON.stringify(req.body))).catch((error) => {
       res.status(500)
         .send(error);
     }).then((product) => {
@@ -55,7 +55,7 @@ app.post('/:productId', function (req) {
     });
 })
 
-app.delete('/:productId', function (req) {
+app.delete('/:productId', function (req, res) {
   queries.delete(req.params['productId']).catch((error) => {
     res.status(500)
       .send(error);
