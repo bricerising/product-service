@@ -8,15 +8,18 @@ spec:
     metadata:
       labels:
         app: product-service
-        version: {{ .Values.productservice.deployment.tag }}
+        version: {{ .Values.product-service.deployment.tag }}
     spec:
       containers:
         - name: product-service
-          image: {{ .Values.productservice.deployment.image }}:{{ .Values.productservice.deployment.tag }}
+          image: {{ .Values.product-service.deployment.image }}:{{ .Values.product-service.deployment.tag }}
           imagePullPolicy: Always
           resources:
             limits:
               memory: 128M
               cpu: .1
+          environment:
+            - name: MONGO_HOST
+              value: mongo-mongodb
           ports:
             - containerPort: 3000

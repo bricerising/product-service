@@ -5,7 +5,7 @@ const mongodb = require('mongodb');
 const uuid = require('uuid');
 
 const MongoClient = mongodb.MongoClient;
-const url = 'mongodb://localhost:27017/product-service';
+const url = process.env.MONGO_HOST ? `mongodb://${process.env.MONGO_HOST}:27017/product-service` : 'mongodb://localhost:27017/product-service';
 
 module.exports = {
 
