@@ -18,8 +18,8 @@ spec:
             limits:
               memory: 128M
               cpu: .1
-          environment:
+          env:
             - name: MONGO_HOST
-              value: mongo-mongodb
+              value: "mongo-mongodb"
           ports:
             - containerPort: 3000
