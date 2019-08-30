@@ -8,11 +8,11 @@ spec:
     metadata:
       labels:
         app: product-service
-        version: {{ .Values.product-service.deployment.tag }}
+        version: {{ .Values.productservice.deployment.tag }}
     spec:
       containers:
         - name: product-service
-          image: {{ .Values.product-service.deployment.image }}:{{ .Values.product-service.deployment.tag }}
+          image: {{ .Values.productservice.deployment.image }}:{{ .Values.productservice.deployment.tag }}
           imagePullPolicy: Always
           resources:
             limits:
